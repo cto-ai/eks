@@ -1,8 +1,8 @@
 version: "1"
 commands:
-  - name: eks:1.0.1
+  - name: eks:1.0.2
     remote: true
-    description: An Op to automate the creation and desturction of EKS cluster
+    description: An Op to automate the creation and destruction of EKS clusters
     public: true
     sourceCodeURL: "https://github.com/cto-ai/eks"
     sdk: "2"
