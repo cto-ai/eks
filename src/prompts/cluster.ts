@@ -68,23 +68,23 @@ export const workerPrompts: Question<PromptAnswer>[] | Question<PromptAnswer>[] 
 ]
 
 export const desiredNodesPrompt: Question = {
-  type: 'input',
+  type: 'number',
   name: 'asg_desired_capacity',
-  default: '1',
+  default: 1,
   message: `\nPlease enter the number of nodes desired:`
 }
 
 export const minNodesPrompt: Question = {
-  type: 'input',
+  type: 'number',
   name: 'asg_min_size',
-  default: '1',
+  default: 1,
   message: `\n${magenta('Please select a minimum & maximum number of worker nodes for the autoscaler:\n')} \nMinimum number of nodes:`,
 }
 
 export const maxNodesPrompt: Question = {
-  type: 'input',
+  type: 'number',
   name: 'asg_max_size',
-  default: '3',
+  default: 3,
   message: `\nMaximum number of nodes:`,
 }
 

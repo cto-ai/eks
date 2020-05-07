@@ -149,7 +149,7 @@ export const hasResourceAvailable = async ({ awsCreds, type, needed = 0 }) => {
     await startSpinner(`Checking if you have availability for \`${needed ? needed: resource.needed} ${resource.name}(s)\` in \`${awsCreds.AWS_DEFAULT_REGION}\`...`)
     const { stdout: count } = await pExec(resource.command)
 
-    const currentCount = parseInt(`${count}`)
+    const currentCount = parseInt(count)
     const numAvailable = resource.limit - currentCount
     const numNeeded = !!needed ? needed : resource.needed
     if (numNeeded <= numAvailable) {

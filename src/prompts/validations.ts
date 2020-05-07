@@ -6,7 +6,7 @@ export const valueExists = async ({ value }) => {
 }
 
 export const isGreaterThanZero = ({ value }) => {
-  return parseInt(value) > 0
+  return value > 0
 }
 
 // Creating clusters - only cluster names that do not currently exist are accepted
@@ -26,6 +26,6 @@ export const isClusterNameToDeleteValid = async ({ value, awsCreds }) => {
 }
 
 export const validateMaxNodes = ({ value, minNodes }) => {
-  return parseInt(value) > parseInt(minNodes)
+  return value > minNodes
 }
 

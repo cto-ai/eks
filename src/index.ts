@@ -68,15 +68,15 @@ async function getClusterSettings(awsCreds) {
       const { asg_max_size } = await validatePrompt({
         prompt: maxNodesPrompt,
         validate: validateMaxNodes,
-        validateOptions: { minNodes: parseInt(asg_min_size) },
+        validateOptions: { minNodes: asg_min_size },
         error: 'The maximum number of nodes must be greater than the minumum number',
       })
 
       workerInput = Object.assign(workerInput, { 
         autoscaling_enabled: true,
-        asg_min_size: parseInt(asg_min_size), 
-        asg_max_size: parseInt(asg_max_size), 
-        asg_desired_capacity: parseInt(asg_min_size) 
+        asg_min_size: asg_min_size, 
+        asg_max_size: asg_max_size, 
+        asg_desired_capacity: asg_min_size
       })
     } else {
       const { asg_desired_capacity } = await validatePrompt({
