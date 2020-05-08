@@ -1,16 +1,6 @@
 import { Question } from '@cto.ai/sdk'
 import { EKS_CONTROL_PLANE_LOG_TYPES } from '../constants'
 
-export const awsProfileNamePrompt: Question = {
-  type: 'input',
-  name: 'AWS_PROFILE',
-  message: '\nPlease enter a name for your AWS credentials profile',
-}
-export const awsProfileNameValidate = (input: string) => {
-  const hasSpaces = /\s/g.test(input)
-  return !!input && input.trim() && !hasSpaces
-}
-
 export const awsDefaultRegionPrompt = (action, regions: string[]): Question => {
   return {
     type: 'autocomplete',
