@@ -1,4 +1,4 @@
-import { sdk, ux } from '@cto.ai/sdk'
+import { ux } from '@cto.ai/sdk'
 import { spawn } from 'child_process'
 import {
   track,
@@ -20,9 +20,6 @@ import {
   DESTROY_STATES,
   TF_RESOURCES,
 } from '../constants'
-import { pExecWithLogs } from './pExec';
-
-const { bold, red, green, reset: { dim } } = ux.colors
 
 export class Terraform {
   awsCreds: AWSCreds;
@@ -163,7 +160,7 @@ export class Terraform {
       cwd: CONFIGS_DIR,
     })
 
-    await plan.stdout.on('data', async message => {
+    plan.stdout.on('data', async message => {
       const msg = message.toString()
       // await ux.print(msg)
 
@@ -182,12 +179,12 @@ export class Terraform {
 
       if (msg.includes(TF_CREATE_COMPLETE)) {
         await succeedSpinner('Cluster - Creation completed')
-        await onComplete()
+        onComplete()
       }
     })
 
     // Rollback if error
-    await plan.stderr.on('data', async message => {
+    plan.stderr.on('data', async message => {
       await ux.print(message.toString())
       await failSpinner('Cluster - Creation failed. Rolling back!')
       await this.destroy({ settingsJson })
@@ -218,7 +215,7 @@ export class Terraform {
       }
     })
 
-    await destroy.stderr.on('data', async message => {
+    destroy.stderr.on('data', async message => {
       const msg = message.toString()
       await ux.print(msg)
       await failSpinner('Cluster - Destruction failed. Please check and clean up resources manually!')

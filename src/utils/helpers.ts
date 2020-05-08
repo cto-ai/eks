@@ -1,4 +1,4 @@
-import { ux, sdk } from '@cto.ai/sdk'
+import { ux } from '@cto.ai/sdk'
 import { track } from '.'
 
 const { red } = ux.colors

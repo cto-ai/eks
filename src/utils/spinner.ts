@@ -1,6 +1,6 @@
-import { sdk, ux } from '@cto.ai/sdk'
+import { ux } from '@cto.ai/sdk'
 
- // TODO: restore when ux.spinner supports multiple instances in parallel
+// TODO: restore when ux.spinner supports multiple instances in parallel
 export const startSpinner = async (text: string) => {
   // if (sdk.getInterfaceType() === 'terminal') {
   //   ux.spinner.start(`⏳  ${text}`)
@@ -15,7 +15,7 @@ export const succeedSpinner = async (text: string) => {
   return await ux.print(`✅  ${ux.colors.green(text)}`)
 }
 
-export const failSpinner = async (text:string) => {
+export const failSpinner = async (text: string) => {
   // if (sdk.getInterfaceType() === 'terminal') {
   //   ux.spinner.start(`❌  ${ux.colors.red(text)}`)
   // }

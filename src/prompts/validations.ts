@@ -1,10 +1,6 @@
 import { listClusters } from '../utils'
 
 // Generic validations
-export const valueExists = async ({ value }) => {
-  return !!value
-}
-
 export const isGreaterThanZero = ({ value }) => {
   return value > 0
 }
@@ -22,10 +18,9 @@ export const isClusterNameToDeleteValid = async ({ value, awsCreds }) => {
   const clusters = await listClusters()
   const clusterExists = clusters.includes(value)
 
-  return (!!value && clusterExists)
+  return !!value && clusterExists
 }
 
 export const validateMaxNodes = ({ value, minNodes }) => {
   return value > minNodes
 }
-
