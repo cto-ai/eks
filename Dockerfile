@@ -35,8 +35,4 @@ RUN wget --quiet https://releases.hashicorp.com/terraform/${TF_VERSION}/terrafor
 
 ENV AWS_CONFIG_FILE="/ops/.aws/config" AWS_SHARED_CREDENTIALS_FILE="/ops/.aws/credentials"
 
-COPY --from=dep /ops .
-
-RUN chown -R 9999 /ops && chgrp -R 9999 /ops
-
-# USER 9999:9999
+COPY --from=dep --chown=9999:9999 /ops .
