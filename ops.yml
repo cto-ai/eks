@@ -13,7 +13,7 @@ commands:
       - package.json
       - .dockerignore
     mountCwd: false
-    mountHome: ffalse
+    mountHome: false
     help:
       usage: |-
         This Op requires AWS credentials. Please review the Op readme for details on how to generate and set up these credentials as secrets.

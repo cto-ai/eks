@@ -13,11 +13,17 @@ ADD . .
 ############################
 # Final container
 ############################
-FROM registry.cto.ai/official_images/node:2-12.13.1-stretch-slim AS final
+FROM registry.cto.ai/official_images/node:2-12.13.1-stretch-slim
 
 WORKDIR /ops
 
-RUN apt update && apt install -y make curl wget unzip ca-certificates openssh-client
+ENV AWS_CLI_VERSION=1.18.52
+RUN apt-get update \
+        && apt-get install -y make curl wget unzip ca-certificates openssh-client python-pip \
+        && pip install --no-cache-dir awscli==${AWS_CLI_VERSION} \
+        && apt-get purge -y python-pip \
+        && apt-get clean \
+        && rm -rf /var/lib/apt/lists
 
 # Terraform
 ENV TF_VERSION=0.12.19
@@ -25,20 +31,6 @@ RUN wget --quiet https://releases.hashicorp.com/terraform/${TF_VERSION}/terrafor
     && unzip terraform_${TF_VERSION}_linux_amd64.zip \
     && mv terraform /usr/bin \
     && rm terraform_${TF_VERSION}_linux_amd64.zip
-
-# Pyhton
-RUN apt update \
-    && apt install python-pip -y 
-
-# AWS CLI
-ENV AWS_CLI_VERSION=1.18.52
-RUN pip install --no-cache-dir awscli==${AWS_CLI_VERSION} \
-    && apt purge python-pip -y \
-    && apt clean ls
-
-# Clean up
-RUN apt purge python-pip -y \
-    && apt clean ls
 
 ENV AWS_CONFIG_FILE="/ops/.aws/config" AWS_SHARED_CREDENTIALS_FILE="/ops/.aws/credentials"
 
