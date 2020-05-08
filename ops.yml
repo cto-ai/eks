@@ -1,6 +1,6 @@
 version: "1"
 commands:
-  - name: eks:1.0.3
+  - name: eks:1.0.4
     remote: true
     description: An Op to automate the creation and destruction of EKS clusters
     public: true
