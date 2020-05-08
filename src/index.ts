@@ -1,5 +1,4 @@
-import { sdk, ux } from '@cto.ai/sdk'
-import yargs from 'yargs'
+import { ux } from '@cto.ai/sdk'
 import {
   track,
   checkResourcesAvailability,

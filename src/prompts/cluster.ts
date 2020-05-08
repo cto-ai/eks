@@ -1,6 +1,4 @@
-import * as fs from 'fs'
-import { sdk, ux, Question } from '@cto.ai/sdk'
-import * as fuzzy from 'fuzzy'
+import { ux, Question } from '@cto.ai/sdk'
 import { PromptAnswer } from '../types'
 import { AWS_INSTANCE_SIZES } from '../constants'
 
