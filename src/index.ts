@@ -1,5 +1,4 @@
-import { sdk, ux } from '@cto.ai/sdk'
-import yargs from 'yargs'
+import { ux } from '@cto.ai/sdk'
 import {
   track,
   checkResourcesAvailability,
@@ -26,7 +25,6 @@ import {
   confirmEnableEKSControlPlaneLogs,
   logTypesPrompt,
   confirmEnableContainerInsightsPrompt,
-  valueExists,
   isGreaterThanZero,
   validateMaxNodes,
 } from './prompts'
@@ -36,7 +34,6 @@ import { ACTION_ARGS, CLUSTER_ACTIONS } from './constants'
 const { green, red, bold, bgRed } = ux.colors
 
 async function getClusterSettings(awsCreds) {
-  const { AWS_PROFILE } = awsCreds
   const users = await grantUserAccess(awsCreds)
 
   const { clusterName } = await validatePrompt({

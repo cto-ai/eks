@@ -1,11 +1,11 @@
-import { ux, sdk } from '@cto.ai/sdk'
+import { ux } from '@cto.ai/sdk'
 import { ClusterSettings, AWSCreds } from '../types'
 import { confirmPrompt } from '../prompts'
 import { startSpinner } from '../utils'
 import { Terraform, track, pExec } from '.'
 import { CONFIGS_DIR } from '../constants'
 
-const { red, green, bold, magenta } = ux.colors
+const { green, bold, magenta } = ux.colors
 
 export class Cluster {
   settings: ClusterSettings;

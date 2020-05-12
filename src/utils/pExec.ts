@@ -1,6 +1,6 @@
 import { promisify } from 'util'
 import { exec } from 'child_process'
-import { sdk, ux } from '@cto.ai/sdk'
+import { ux } from '@cto.ai/sdk'
 
 const { reset: { bold, magenta } } = ux.colors
 

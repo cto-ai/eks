@@ -11,23 +11,13 @@ import {
 import {
   confirmAddUsersPrompt,
   getAdditionalUsersPrompt,
-  awsAccountNumberPrompt,
-  awsAccountNumberValidate,
   awsDefaultRegionPrompt,
-  awsAccessKeyIDPrompt,
-  awsSecretAccessKeyPrompt,
-  awsAccessKeyIDValidate,
-  awsSecretAccessKeyValidate,
 } from '../prompts'
-import {
-  startSpinner,
-  succeedSpinner,
-  failSpinner
-} from '../utils'
+import { startSpinner, succeedSpinner, failSpinner } from '../utils'
 
 export const getCurrentUser = async (awsCreds: AWSCreds) => {
   try {
-    const { stdout } = await pExec(`aws sts get-caller-identity`,)
+    const { stdout } = await pExec(`aws sts get-caller-identity`)
     return JSON.parse(`${stdout}`)
   } catch (error) {
     await ux.print(
